@@ -1,8 +1,15 @@
-path = "" #define path as a string
+import sys
+path = 0
 book_text = "" #define full book as a string
 wcnt = 0 #sets wcnt to be an integer
 ccnt = {}
 kccnt = []
+
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+else:
+    path= sys.argv[1]
 
 def get_book_text(path):
     with open(path) as f:
@@ -15,7 +22,6 @@ from stats import mult_dict
 
 
 def main():
-    path = "books/frankenstein.txt"
     book_text = get_book_text(path)
     wcnt = word_cnt(book_text)
     ccnt = char_cnt(book_text)
